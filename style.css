@@ -1,0 +1,418 @@
+body {
+  margin: 0;
+  background-color: #fff;
+  font-family: 'Source Sans Pro', Helvetica, Arial, Lucida, sans-serif!important;
+}
+#wrapper {
+  margin: 5%;
+  margin-top: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* Accordion Container */
+
+.container {
+  width: 100%;
+  max-width: 800px;
+  min-width: 300px;
+  position: relative;
+}
+/* shadow */
+
+.container:before {
+  content: "";
+  position: absolute;
+  width: calc(100% - 30px);
+  height: 100%;
+  margin: 0;
+  left: 15px;
+  background-color: transparent;
+  top: 0px;
+  box-shadow: 0px 20px 40px #52616b;
+  opacity: 0.2;
+  z-index: -1;
+  transition: ease-in-out 0.6s all;
+}
+.container:hover.container:before {
+  box-shadow: 0px 40px 90px #52616b;
+}
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  background-color: white;
+  border-radius: 3px;
+}
+.accordionTitle {
+  padding: 20px;
+  position: relative;
+  margin-bottom: 0;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 0.8px;
+  color: #54575A;
+  transition: ease-in-out 0.2s all;
+  cursor: pointer;
+}
+.accordionTitle:hover {
+  padding-left: 25px;
+}
+/* Accordion Item line */
+
+.accordionTitle:before, .accordionTitle:after {
+  content: "";
+  position: absolute;
+  height: 2px;
+  border-radius: 50px;
+  transition: ease-in-out 0.6s all;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.accordionTitle:before {
+  width: 100%;
+  background-color: #ddd;
+}
+.accordionTitle:after {
+  background-image: linear-gradient(90deg, #F7D117, #f8f8f8);
+  width: 0%;
+}
+.accordionTitle:hover::after {
+  width: 100%;
+}
+/* Accordion Item line - Active */
+
+.accordionTitleActive:after {
+  content: "";
+  position: absolute;
+  height: 2px;
+  border-radius: 50px;
+  transition: ease-in-out 0.6s all;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.accordionTitleActive:after {
+  background-image: linear-gradient(90deg, #F7D117, #f8f8f8);
+  width: 100%;
+}
+/* Accordion Item Icon  */
+
+.accIcon {
+  float: right;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  margin-top: -3px;
+  align-items: center;
+  justify-content: center;
+}
+.accIcon:before, .accIcon:after {
+  content: "";
+  position: absolute;
+  border-radius: 50px;
+  background-color: #EA0029;
+  transition: ease 0.3s all;
+}
+.accIcon:before {
+  width: 2px;
+  height: 20px;
+}
+.accIcon:after {
+  width: 20px;
+  height: 2px;
+}
+.accordionTitle:hover .accIcon:before, .accordionTitle:hover .accIcon:after {
+  background-color: #EA0029;
+}
+.accIcon.anime.accIcon:before {
+  transform: rotate(90deg);
+}
+/* Text Content */
+
+.accordion .item .text {
+  opacity: 0;
+  height: 0;
+  padding: 0px 20px;
+  position: relative;
+  line-height: 24px;
+  font-size: 16px;
+  font-weight: 200;
+  transition: all 0.6s cubic-bezier(0.42, 0.2, 0.08, 1);
+  overflow: hidden;
+  background-color: #f8f8f8;
+  letter-spacing: 0.5px;
+}
+/* Text Content - Class for JS to hide and show */
+
+.accordion .item .text.show {
+  opacity: 1;
+  height: auto;
+  padding: 25px 20px;
+  position: relative;
+  z-index: 0;
+  border-radius: 0px 0px 3px 3px;
+}
+.responsive img {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  margin-left: 85px;
+  padding: 30px 30px;
+}
+.row {
+  display: flex;
+}
+/* Create three equal columns that sits next to each other */
+
+.column {
+  flex: 25%;
+  padding: 35px;
+}
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
+  .responsive img {
+    margin-left: 40px;
+  }
+}
+/* ----------- iPhone 4 and 4S ----------- */
+
+/* Portrait and Landscape */
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2) {
+  ol {
+    padding: 0px;
+  }
+  .responsive img {
+    margin-left: 0px;
+  }
+  .accordion .item .text {
+    padding: 15px 15px;
+  }
+}
+/* Portrait */
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {}
+/* Landscape */
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {}
+/* ----------- iPhone 5, 5S, 5C and 5SE ----------- */
+
+/* Portrait and Landscape */
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (-webkit-min-device-pixel-ratio: 2) {
+  img .responsive {
+    margin-left: 0px;
+    width: 80%;
+    padding-left: 47px;
+  }
+  .accordion .item .text.show {
+    /* padding:25px 25px; */
+  }
+  .container {
+    padding-right: 0px;
+    padding-left: 0px;
+  }
+  .btn-top {
+    margin-left: 0%;
+  }
+  #wrapper {
+    margin-top: 25px;
+  }
+}
+/* Portrait */
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
+  .responsive img {
+    margin-left: 0px;
+  }
+  .accordion .item .text.show {
+    margin-right: 0;
+  }
+  .btn-top {
+    margin-left: 0% !important;
+  }
+}
+/* Landscape */
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {}
+/* ----------- iPhone 6, 6S, 7 and 8 ----------- */
+
+/* Portrait and Landscape */
+
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) {
+  .responsive img {
+    /* margin-left:-30px; */
+  }
+  .accordion .item .text.show {
+    margin-right: 0;
+  }
+  .btn-top {
+    margin-left: 0% !important;
+  }
+}
+/* Landscape */
+
+@media only screen and (min-device-width: 414px) and (max-device-width: 736px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: landscape) {
+  img {
+    margin-left: -60px;
+  }
+  .btn-top {
+    margin-left: 0% !important;
+  }
+  #wrapper {
+    margin-top: 25px;
+  }
+}
+/* Portrait and Landscape */
+
+@media only screen and (min-device-width: 375px) and (max-device-width: 768px) and (-webkit-min-device-pixel-ratio: 2) {
+  img {
+    margin-left: 20%;
+  }
+  .responsive {
+    width: 100%;
+  }
+  .btn-top {
+    margin-left: 0% !important;
+  }
+  #wrapper {
+    margin-top: 25px;
+  }
+}
+/* Landscape */
+
+@media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: landscape) {
+  .responsive, img {
+    margin-left: 0px;
+  }
+  .btn-top {
+    margin-left: 0% !important;
+  }
+}
+@media screen and (device-width: 280px) and (device-height: 653px) and (-webkit-device-pixel-ratio: 2) {
+  .responsive, img {
+    margin-left: -15px;
+  }
+  .btn-top {
+    margin-left: 0% !important;
+  }
+  #wrapper {
+    margin-top: 25px;
+  }
+}
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2) {
+  #wrapper {
+    margin-top: 25px;
+  }
+  .btn-top {
+    margin-left: -60%;
+  }
+}
+/* ----------- iPad Pro 12.9" ----------- */
+
+/* Portrait and Landscape */
+
+@media only screen and (min-device-width: 1024px) and (max-device-width: 1366px) and (-webkit-min-device-pixel-ratio: 2) {
+  #wrapper {
+    margin-top: 25px;
+  }
+  .btn-top .accordion-btn {
+    margin-left: 35%;
+  }
+}
+.accordion-btn a {
+  padding: 10px 10px;
+  color: #ffffff!important;
+  border-width: 0px!important;
+  border-radius: 10px;
+  font-family: 'Source Sans Pro', Helvetica, Arial, Lucida, sans-serif!important;
+  font-weight: 600!important;
+  background-color: #ea0029;
+  margin-left: 10px;
+  border: none;
+}
+.btn-top {
+  background-color: #fff;
+  margin: 5%;
+  margin-left: 38%;
+  margin-top: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  font-size: 16px;
+  color: #6a6c6f;
+}
+
+.accordion-btn {
+  float: right;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  margin-top: -3px;
+  align-items: center;
+  justify-content: center;
+}
+.accordion-btn:before, .accordion-btn:after {
+  content: "";
+  position: absolute;
+  border-radius: 50px;
+  background-color: #EA0029;
+  transition: ease 0.3s all;
+}
+/* .accordion-btn:before {
+  width: 2px;
+  height: 20px;
+}
+.accordion-btn:after {
+  width: 20px;
+  height: 2px;
+} */
+
+
+
+.accIcon.anime[aria-expanded="true"]:after {
+  width: 2px;
+  height: 20px;
+}
+
+.accIcon-btn .anime[aria-expanded="false"]:after {
+  width: 20px;
+  height: 2px;
+}
+
+/* .accordion-btn :before{
+  width: 2px;
+  height: 20px;
+}
+.accordion-btn:fter{
+  width: 20px;
+  height: 2px;
+}
+
+
+/* .expandall .accIcon:before, .expandall .accIcon:after {
+  position: absolute;
+  border-radius: 50px;
+  background-color: #EA0029;
+  transition: ease 0.3s all;
+  content: "\002b";
+  -webkit-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+.expandall .accIcon:before {
+  width: 2px;
+  height: 20px;
+  content: "\002b";
+  -webkit-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+.expandall .accIcon:after {
+  width: 20px;
+  height: 2px;
+} */
